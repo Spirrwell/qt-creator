@@ -1520,8 +1520,10 @@ void DebuggerEnginePrivate::updateState()
     const bool detachable = stopped && !isCore;
     m_detachAction.setEnabled(detachable);
 
-    if (stopped)
-        QApplication::alert(ICore::dialogParent(), 3000);
+    // TODO: This alert causes an external terminal to lose focus on debug
+    // This happens for certain desktop environments, a compromise should be found.
+    //if (stopped)
+        //QApplication::alert(ICore::dialogParent(), 3000);
 
     updateReverseActions();
 
